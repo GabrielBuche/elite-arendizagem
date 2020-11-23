@@ -1,0 +1,28 @@
+.login {
+    background-color: #192227;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    background-color: #263238;
+}
+
+.loginEsenha {
+    color: #000000;
+}
+
+.letraTab {
+    color: #000000;
+    padding-left: 5px;
+}
+
+.nav-link {
+    color: #eeeeee;
+}
+
+.tab-content {
+    background-color: white;
+}

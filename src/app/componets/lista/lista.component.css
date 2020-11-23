@@ -1,0 +1,59 @@
+.lista {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    padding: 15px;
+}
+
+.lista::-webkit-scrollbar {
+    width: 10px;
+}
+
+.lista::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.lista::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.lista::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.card {
+    background-color: #192227;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15)!important;
+    border: 2px solid #192227;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+.accord-header {
+    background-color: #192227;
+    color: #cccccc;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.accord-title {
+    cursor: pointer;
+}
+
+.accord-body {
+    background-color: #cccccc;
+    color: black;
+}
+
+.accord-btn {
+    float: right;
+}
+
+.btn-op {
+    color: grey;
+    cursor: pointer;
+}
+
+.btn-op:hover {
+    color: white;
+}

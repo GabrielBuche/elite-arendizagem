@@ -1,0 +1,37 @@
+<div class="lista">
+    <div class="accordion" id="accordionExample">
+        <div class="card" *ngFor="let user of users; let i = index;">
+            <div class="card-header accord-header" id="headingOne">
+                <span class="accord-title" data-toggle="collapse" data-target="#idteste" aria-expanded="true" aria-controls="collapseOne" (click)="abrir(i)">
+                    <i class="fas fa-user mr-2 btn-op"></i> {{user.nome}}
+                </span>
+                <span class="accord-btn">
+                    <i class="fas fa-user-edit mx-1 btn-op" (click)="edit(user)"></i>
+                    <i class="fas fa-trash-alt mx-1 btn-op" (click)="remover(user.id)"></i>
+                </span>
+            </div>
+
+            <div id="idteste" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body accord-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <strong>Endereço:</strong> {{user.endereco}}
+                        </div>
+                        <div class="col-6">
+                            <strong>Bairro:</strong> {{user.bairro}}
+                        </div>
+                        <div class="col-6">
+                            <strong>Cidade:</strong> {{user.cidade}}
+                        </div>
+                        <div class="col-6">
+                            <strong>Estado:</strong> {{user.estado}}
+                        </div>
+                        <div class="col-6">
+                            <strong>CEP:</strong> {{user.cep}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

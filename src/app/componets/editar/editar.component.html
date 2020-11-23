@@ -1,0 +1,44 @@
+<form [formGroup]="formEditar">
+    <div class="container">
+        <div class="row">
+            <div class="form-group col-12 col-md-12 col-lg-12">
+                <label for="inputEmail4">Nome</label>
+                <input type="text" class="form-control" formControlName="nome" placeholder="Insira seu nome">
+            </div>
+            <div class="form-group col-12 col-md-6 col-lg-6">
+                <label for="inputAddress">Endereço</label>
+                <input type="text" class="form-control" formControlName="endereco" placeholder="insira o endereço">
+            </div>
+            <div class="form-group col-12 col-md-6 col-lg-6">
+                <label for="inputAddress2">Bairro</label>
+                <input type="text" class="form-control" formControlName="bairro" placeholder="insira o bairro">
+            </div>
+            <div class="form-group col-12 col-md-4 col-lg-6">
+                <label for="inputCity">Cidade</label>
+                <input type="text" class="form-control" formControlName="cidade" placeholder="insira a cidade">
+            </div>
+            <div class="form-group col-12 col-md-4 col-lg-3">
+                <label for="inputState">UF</label>
+                <select class="form-control" formControlName="estado" placeholder="selecionar">
+                        <option selected>Selecionar<option>
+                        <option>PR</option>
+                        <option>SP</option>
+                        <option>RS</option>
+                        <option>MG</option>
+                        <option>PR</option>
+                        <option>DF</option>
+                        <option>AC</option>
+                        <option>MT</option>
+                </select>
+            </div>
+            <div class="form-group col-12 col-md-4 col-lg-3">
+                <label for="inputZip">caixa postal</label>
+                <input type="text" class="form-control" formControlName="zip" placeholder="caixa postal">
+            </div>
+            <div class="col-12 text-center">
+                <button type="button" (click)="salvar()" class="btn btn-primary btn-block" [disabled]="!this.formEditar.valid">Salvar</button>
+            </div>
+        </div>
+
+    </div>
+</form>

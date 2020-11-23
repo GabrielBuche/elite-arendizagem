@@ -1,0 +1,27 @@
+<div class="home">
+    <div class="menu-top">
+
+        <button (click)="mudarMenu()" class="btn btn-link toggle">
+            <i class="fas" [ngClass]="{'fa-toggle-on': mostrarMenu, 'fa-toggle-off': !mostrarMenu}"></i> MENU
+        </button>
+        <button (click)="logout()" class="btn btn-link logout">
+            <i class="fas fa-sign-out-alt"></i> SAIR
+        </button>
+    </div>
+    <div class="main">
+        <div class="menu " *ngIf="mostrarMenu">
+            <nav class="nav flex-column text-left">
+                <a class="nav-link" [routerLink]="['lista']" routerLinkActive="nav-link-active">
+                    <i class="fas fa-list-alt"></i> Lista
+                </a>
+                <a class="nav-link" [routerLink]="['cadastro']" routerLinkActive="nav-link-active">
+                    <i class="fas fa-user-plus"></i> Cadastrar
+                </a>
+            </nav>
+        </div>
+
+        <div class="content shadow" [ngClass]="{'contentFull': !mostrarMenu}">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
