@@ -1,40 +1,35 @@
 {
-    "users": [{
-            "nome": "1",
-            "endereco": "pacheco",
-            "bairro": "pacheco",
-            "cidade": "pacheco",
-            "estado": "PR",
-            "cep": "pacheco",
-            "id": 2
-        },
-        {
-            "nome": "awdwadaw",
-            "endereco": "dwadaw",
-            "bairro": "dawdawd",
-            "cidade": "dwadaw",
-            "estado": "SP",
-            "cep": "dawdaw",
-            "id": 3
-        }
-    ],
-    "clients": [{
-            "nome": "1",
-            "endereco": "pacheco",
-            "bairro": "pacheco",
-            "cidade": "pacheco",
-            "estado": "PR",
-            "cep": "pacheco",
-            "id": 2
-        },
-        {
-            "nome": "awdwadaw",
-            "endereco": "dwadaw",
-            "bairro": "dawdawd",
-            "cidade": "dwadaw",
-            "estado": "SP",
-            "cep": "dawdaw",
-            "id": 3
-        }
-    ],
+  "user": [
+    {
+      "id": 1,
+      "user": "admin",
+      "password": "admin"
+    },
+    {
+      "user": "pacheco",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "user": "gabriel",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "user": "admin",
+      "password": "admin",
+      "id": 4
+    },
+    {
+      "user": "a",
+      "password": "a",
+      "id": 5
+    },
+    {
+      "user": "a",
+      "password": "a",
+      "id": 6
+    }
+  ],
+  "client": []
 }

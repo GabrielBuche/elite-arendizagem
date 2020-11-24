@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { RequestService } from '../../services/request.service';
 
 @Component({
   selector: 'app-login',
@@ -8,61 +9,45 @@ import { Router } from '@angular/router'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  bd = [
-
-    { user: '1', password: '1' },
-    { user: 'usergabriel', password: 'passgabriel' },
-    { user: 'userpacheco', password: 'passpacheco' },
-  ];
-
   formLogin: FormGroup;
   formCadastrar: FormGroup;
 
-  constructor(private formB: FormBuilder, private router: Router) {
+  constructor(private formB: FormBuilder, private router: Router, private request: RequestService) {
   }
 
   ngOnInit(): void {
-    this.bd.forEach(i => {
-      localStorage.setItem(i.user, i.password);
-    });
-
-
-    this.formLogin = this.formB.group({
-      user: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-
-
     this.formCadastrar = this.formB.group({
       user: ['', Validators.required],
       password: ['', Validators.required],
-    });
-  }
+    }),
+
+      this.formLogin = this.formB.group({
+        user: ['', Validators.required],
+        password: ['', Validators.required],
+      })
+  };
 
   logar() {
-    if (localStorage.getItem(this.formLogin.get('user').value) === this.formLogin.get('password').value) {
-      this.gerarToken();
-      this.router.navigate(['home']);
-    } else {
-      alert('usúario não encontrado');
-    }
+    this.request.getUser(this.formLogin.get('user').value).subscribe(res => {
+      console.log(res);
+      if (res[0] && res[0].password === this.formLogin.get('password').value) {
+        sessionStorage.setItem('token', res[0].id);
+        this.router.navigate(['home']);
+      }
+      else {
+        alert('Usuário ou senha incorreta!');
+        this.formLogin.get('user').setValue('');
+        this.formLogin.get('password').setValue('');
+      }
+
+    })
   }
   cadastrar() {
-    if (!localStorage.getItem(this.formCadastrar.get('user').value)) {
-      localStorage.setItem(this.formCadastrar.get('user').value, this.formCadastrar.get('password').value);
-      alert('Usuário: ' + this.formCadastrar.get('user').value + ' cadastrado com sucesso!');
-    }
-    else {
-      alert('Usuário já exisente')
-    }
-  }
-  gerarToken() {
-    sessionStorage.setItem('token', this.gerarNumeroAleatorio())
-  }
-  gerarNumeroAleatorio() {
-    let u = new Uint32Array(1);
-    window.crypto.getRandomValues(u);
-    let str = u[0].toString(16).toUpperCase();
-    return '00000000'.slice(str.length) + str;
+    this.request.setUser(this.formCadastrar.value).subscribe(resp => {
+      alert('Usuário ' + this.formCadastrar.get('user').value + 'cadastrado com sucesso!');
+      this.formCadastrar.get('user').setValue('');
+      this.formCadastrar.get('password').setValue('');
+      
+    })
   }
 }

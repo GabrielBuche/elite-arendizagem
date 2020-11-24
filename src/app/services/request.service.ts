@@ -19,50 +19,73 @@ export class RequestService {
 
   constructor(private http: HttpClient) { }
 
-  public getUser(): Observable<any> {
-    return this.http.get(this.url + '/users', this.options)
-      .pipe(
-        retry(2),
-        catchError(this.handleError))
-  }
-
-  public setUser(data): Observable<any> {
+  setUser(dados): Observable<any> {
     let params = {
-      "nome": data.nome,
-      "endereco": data.endereco,
-      "bairro": data.bairro,
-      "cidade": data.cidade,
-      "estado": data.estado,
-      "cep": data.zip,
+      "user": dados.user,
+      "password": dados.password
     }
-    return this.http.post(this.url + '/users', params, this.options)
+    return this.http.post(this.url + '/user', params, this.options)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
-  public removeUser(id): Observable<any> {
-
-    return this.http.delete(this.url + '/users/' + id, this.options)
+  getUser(dados): Observable<any> {
+    return this.http.get(this.url + '/user?user=' + dados, this.options)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
-  public updateUser(id, data): Observable<any> {
+  getClient(): Observable<any> {
+    return this.http.get(this.url + '/client', this.options)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
+
+  setClient(dados): Observable<any> {
     let params = {
-      "nome": data.nome,
-      "endereco": data.endereco,
-      "bairro": data.bairro,
-      "cidade": data.cidade,
-      "estado": data.estado,
-      "cep": data.zip,
+      "nome": dados.nome,
+      "endereco": dados.endereco,
+      "bairro": dados.bairro,
+      "cidade": dados.cidade,
+      "estado": dados.estado,
+      "cep": dados.zip,
     }
-    return this.http.patch(this.url + '/users/' + id, params, this.options)
+
+    return this.http.post(this.url + '/client', params, this.options)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
+
+  updateClient(dados, id): Observable<any> {
+    let params = {
+      "nome": dados.nome,
+      "endereco": dados.endereco,
+      "bairro": dados.bairro,
+      "cidade": dados.cidade,
+      "estado": dados.estado,
+      "cep": dados.zip,
+    }
+    return this.http.patch(this.url + '/client/' + id, params, this.options)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)) 
+  }
+
+
+  public removeClient(id): Observable<any> {
+
+    return this.http.delete(this.url + '/client/' + id, this.options)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
+
+
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';

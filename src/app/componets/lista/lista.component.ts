@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../../services/request.service'
 import { Router } from '@angular/router';
 import { EditarService } from '../../services/editar.service';
-import { $ } from 'protractor';
+
 
 @Component({
   selector: 'app-lista',
@@ -19,16 +19,17 @@ export class ListaComponent implements OnInit {
   }
 
   getUsuarios() {
-    this.request.getUser().subscribe(res => {
+    this.request.getClient().subscribe(res => {
       this.users = res;
     })
   }
 
   remover(id) {
-    this.request.removeUser(id).subscribe(res => {
+    this.request.removeClient(id).subscribe(res => {
       this.getUsuarios();
     })
   }
+
   edit(dado) {
     this.editar.selecionar(dado);
     this.router.navigate(['home/editar']);

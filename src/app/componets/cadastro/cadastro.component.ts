@@ -25,8 +25,8 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastrar() {
-    this.request.setUser(this.formCadastro.value).subscribe(res => {
-      alert('Usuário: ' + this.formCadastro.get('nome').value + ' cadastrado com sucesso!');
+    this.request.setClient(this.formCadastro.value).subscribe(res => {
+      alert('usúario: ' + this.formCadastro.get('nome').value);
       this.formCadastro.get('nome').setValue('');
       this.formCadastro.get('endereco').setValue('');
       this.formCadastro.get('bairro').setValue('');

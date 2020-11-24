@@ -26,9 +26,9 @@ export class EditarComponent implements OnInit {
     });
   }
   salvar() {
-    this.request.updateUser(this.dados.id, this.formEditar.value).subscribe(res => {
-      alert('Usuário: ' + this.formEditar.get('nome').value + ' alterado com sucesso!');
+    this.request.updateClient(this.formEditar.value, this.dados.id).subscribe(res =>{
+      alert('usuario ' + this.formEditar.get('nome').value + ' editado com sucesso!');
       this.router.navigate(['home/lista']);
-    })
+    });
   }
 }

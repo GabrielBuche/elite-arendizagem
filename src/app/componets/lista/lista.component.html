@@ -2,7 +2,7 @@
     <div class="accordion" id="accordionExample">
         <div class="card" *ngFor="let user of users; let i = index;">
             <div class="card-header accord-header" id="headingOne">
-                <span class="accord-title" data-toggle="collapse" data-target="#idteste" aria-expanded="true" aria-controls="collapseOne" (click)="abrir(i)">
+                <span class="accord-title" data-toggle="collapse" data-target="#idteste" aria-expanded="true" aria-controls="collapseOne">
                     <i class="fas fa-user mr-2 btn-op"></i> {{user.nome}}
                 </span>
                 <span class="accord-btn">
